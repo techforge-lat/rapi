@@ -38,4 +38,16 @@ var DetailByStatusCode = map[string]string{
 	string(Forbidden):            "No tiene los permisos necesarios para realizar esta acción.",
 	string(NotFound):             "El recurso solicitado no existe o no está disponible en el servidor.",
 	string(DataValidationFailed): "La información proporcionada no cumple con los requisitos de validación. Por favor, verifique los datos e inténtelo de nuevo.",
+	string(UnprocessableEntity):  "La información proporcionada no cumple con los requisitos de validación. Por favor, verifique los datos e inténtelo de nuevo.",
+}
+
+var TitleByStatusCode = map[string]string{
+	string(InternalError):        "Error del servidor",
+	string(BadRequest):           "Solicitud no válida",
+	string(BindFailed):           "Error al procesar los datos",
+	string(Unauthorized):         "No identificado",
+	string(Forbidden):            "Acceso denegado",
+	string(NotFound):             "Recurso no encontrado",
+	string(DataValidationFailed): "Validación de datos fallida",
+	string(UnprocessableEntity):  "Validación de datos fallida",
 }
