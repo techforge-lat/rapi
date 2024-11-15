@@ -76,3 +76,27 @@ func UnexpectedError() *Response {
 		Status:     http.StatusInternalServerError,
 	}
 }
+
+func Created(data any) *Response {
+	return &Response{
+		Title:      "Petición exitosa",
+		Detail:     "Recurso creado",
+		StatusCode: "created",
+	}
+}
+
+func NotFoundResponse() *Response {
+	return &Response{
+		Title:      "Recurso no encontrado",
+		Detail:     "El recurso solicitado no existe",
+		StatusCode: "not_found",
+	}
+}
+
+func Updated() *Response {
+	return &Response{
+		Title:      "Petición exitosa",
+		Detail:     "Recurso actualizado",
+		StatusCode: "updated",
+	}
+}
