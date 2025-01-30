@@ -4,6 +4,8 @@ import (
 	"net/http"
 )
 
+const responseType = "https://datatracker.ietf.org/doc/html/rfc9457"
+
 type Response struct {
 	Data       any    `json:"data,omitempty"`
 	Type       string `json:"type"`
@@ -16,7 +18,7 @@ type Response struct {
 }
 
 func New() *Response {
-	return &Response{Type: "https://datatracker.ietf.org/doc/html/rfc9457"}
+	return &Response{Type: responseType}
 }
 
 func (r *Response) SetType(t string) *Response {
@@ -63,6 +65,7 @@ func (r *Response) SetInstance(instance string) *Response {
 
 func Ok(data any) *Response {
 	return &Response{
+		Type:       responseType,
 		Data:       data,
 		StatusCode: string(Success),
 		Status:     http.StatusOK,
@@ -71,6 +74,7 @@ func Ok(data any) *Response {
 
 func UnexpectedError() *Response {
 	return &Response{
+		Type:       responseType,
 		Detail:     DetailByStatusCode[string(InternalError)],
 		StatusCode: string(InternalError),
 		Status:     http.StatusInternalServerError,
@@ -79,24 +83,30 @@ func UnexpectedError() *Response {
 
 func Created(data any) *Response {
 	return &Response{
+		Type:       responseType,
 		Title:      "Petición exitosa",
 		Detail:     "Recurso creado",
 		StatusCode: "created",
+		Status:     http.StatusCreated,
 	}
 }
 
 func NotFoundResponse() *Response {
 	return &Response{
+		Type:       responseType,
 		Title:      "Recurso no encontrado",
 		Detail:     "El recurso solicitado no existe",
 		StatusCode: "not_found",
+		Status:     http.StatusNotFound,
 	}
 }
 
 func Updated() *Response {
 	return &Response{
+		Type:       responseType,
 		Title:      "Petición exitosa",
 		Detail:     "Recurso actualizado",
 		StatusCode: "updated",
+		Status:     http.StatusOK,
 	}
 }
